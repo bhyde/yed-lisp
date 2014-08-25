@@ -5,10 +5,13 @@ diagrams.  For example this very simple drawing.
 
 yEd saves, usually, it's drawing in graphML format ([[file:./abc.graphml][for example]]).  Which provides
 us with a nice chance to chew on the drawing for other purposes.  For
-example we might convert flow charts into programs, or whatever.
+example we might convert charts into programs, rdf, ontologies, etc.
+
+Inspired by [[https://github.com/guitarvydas][Paul Tarvydas]]' short lightning talk at ILC 2004 I thought
+it would be fun to write some code that eats the graphml files.
 
 The code here loads the graphML, creating a reasonably clean
-sexpr.  That might look something like this:
+sexpr; that looks something like this:
 
 #+begin_src lisp
 (:graphml ((:schemalocation . 1.1))
@@ -39,7 +42,21 @@ sexpr.  That might look something like this:
    ...
 #+end_src
 
-There is code to extract the toplogy (nodes and edges) from sexpressions like that.
+There is bit of code to extract the toplogy (nodes and edges) from
+sexpressions like that.
 
-The shell script topology.sh, which uses cl-launch uses that code to
-display all the edges.  But it doesn't work for me yet.
+The shell script topology.sh, which uses cl-launch all the edges.
+But, I'm currently having problems getting cl-launch to work.  So
+you can just eval that file and then run something like this:
+
+#+begin_src shell
+> (cl-user::main '("/Users/luser/w/yd-lisp/abc.graphml"))
+Alpha -> Beta
+Beta -> Cancel
+Beta -> Beta
+Beta -> Beta
+#+end_src
+
+Which illustrates that there are two extra edges in the abc.graphml that
+doesn't appear in the drawing.  Mysteries abound.
+
