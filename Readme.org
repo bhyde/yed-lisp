@@ -45,9 +45,20 @@ sexpr; that looks something like this:
 There is bit of code to extract the toplogy (nodes and edges) from
 sexpressions like that.
 
-The shell script topology.sh, which uses cl-launch all the edges.
-But, I'm currently having problems getting cl-launch to work.  So
-you can just eval that file and then run something like this:
+The shell script topology.sh, which uses 
+[[http://cliki.net/cl-launch][cl-launch]] to print all the edges.
+
+#+begin_src shell
+bash-3.2$ ./topology.sh abc.graphml
+Alpha -> Beta
+Beta -> Cancel
+Beta -> Beta
+Beta -> Beta
+bash-3.2$ 
+#+end_src
+
+You can also eval the function main in file and then run something
+like this:
 
 #+begin_src lisp
 > (cl-user::main '("/Users/luser/w/yd-lisp/abc.graphml"))
