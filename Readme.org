@@ -49,7 +49,7 @@ The shell script topology.sh, which uses cl-launch all the edges.
 But, I'm currently having problems getting cl-launch to work.  So
 you can just eval that file and then run something like this:
 
-#+begin_src shell
+#+begin_src lisp
 > (cl-user::main '("/Users/luser/w/yd-lisp/abc.graphml"))
 Alpha -> Beta
 Beta -> Cancel
@@ -58,5 +58,5 @@ Beta -> Beta
 #+end_src
 
 Which illustrates that there are two extra edges in the abc.graphml that
-doesn't appear in the drawing.  Mysteries abound.
+do not appear in the drawing.  Mysteries abound.
 
