@@ -10,7 +10,7 @@ example we might convert flow charts into programs, or whatever.
 The code here loads the graphML, creating a reasonably clean
 sexpr.  That might look something like this:
 
-#+begin-code common-lisp
+#+begin_src lisp
 (:graphml ((:schemalocation . 1.1))
  (:key ((:yfiles.type "resources") (:id . 0) (:for . :graphml)))
  ...
@@ -37,7 +37,7 @@ sexpr.  That might look something like this:
      (:linestyle (...))
      (:arrows (...)))))
    ...
-#+end-code
+#+end_src
 
 There is code to extract the toplogy (nodes and edges) from sexpressions like that.
 
