@@ -1,0 +1,14 @@
+[[http://www.yworks.com/en/products_yed_about.html][yEd] is a nice free editor for drawing flow charts and other
+diagrams.  For example this very simple drawing.
+
+[[file:abc.png]]
+
+yEd saves, usually, it's drawing in graphML format.  Which provides
+us with a nice chance to chew on the drawing for other purposes.  For
+example we might convert flow charts into programs, or whatever.
+
+The code here loads the graphML, creating a reasonably clean
+sexpr and then extracts the topology from that.
+
+The shell script topology.sh, which uses cl-launch uses that code to
+display all the edges.  But it doesn't work for me yet.
