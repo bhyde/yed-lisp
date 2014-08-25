@@ -1,14 +1,45 @@
-[[http://www.yworks.com/en/products_yed_about.html][yEd] is a nice free editor for drawing flow charts and other
+[[http://www.yworks.com/en/products_yed_about.html][yEd]] is a nice free editor for drawing flow charts and other
 diagrams.  For example this very simple drawing.
 
 [[file:abc.png]]
 
-yEd saves, usually, it's drawing in graphML format.  Which provides
+yEd saves, usually, it's drawing in graphML format ([[file:./abc.graphml][for example]]).  Which provides
 us with a nice chance to chew on the drawing for other purposes.  For
 example we might convert flow charts into programs, or whatever.
 
 The code here loads the graphML, creating a reasonably clean
-sexpr and then extracts the topology from that.
+sexpr.  That might look something like this:
+
+#+begin-code common-lisp
+(:graphml ((:schemalocation . 1.1))
+ (:key ((:yfiles.type "resources") (:id . 0) (:for . :graphml)))
+ ...
+ (:graph ((:id "G") (:edgedefault "directed")) (:data ((:key . 7)))
+
+  (:node ((:id . 0)) (:data ((:key . 5)))
+   (:data ((:key . 6))
+    (:shapenode nil
+     (:geometry ((:y . 36.0) ...))
+     (:fill (...))
+     (:borderstyle (...))
+     (:nodelabel
+      ((:y . 5.93359375) (:x . 28.8125) (:width . 37.375) ...)
+      "Alpha"
+      (:labelmodel ...)
+      (:modelparameter ...)) ...)))
+
+  ...
+
+  (:edge ((:target . 2) (:source . 0) (:id . 0)) (:data ((:key . 9)))
+   (:data ((:key . 10))
+    (:splineedge nil 
+     (:path ((:ty . 0.0) ...))
+     (:linestyle (...))
+     (:arrows (...)))))
+   ...
+#+end-code
+
+There is code to extract the toplogy (nodes and edges) from sexpressions like that.
 
 The shell script topology.sh, which uses cl-launch uses that code to
 display all the edges.  But it doesn't work for me yet.
