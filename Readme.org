@@ -17,8 +17,8 @@ sexpr; that looks something like this:
 (:graphml ((:schemalocation . 1.1))
  (:key ((:yfiles.type "resources") (:id . 0) (:for . :graphml)))
  ...
- (:graph ((:id "G") (:edgedefault "directed")) (:data ((:key . 7)))
-
+ (:graph ((:id "G") (:edgedefault "directed"))
+  ...
   (:node ((:id . 0)) (:data ((:key . 5)))
    (:data ((:key . 6))
     (:shapenode nil
@@ -39,14 +39,13 @@ sexpr; that looks something like this:
      (:path ((:ty . 0.0) ...))
      (:linestyle (...))
      (:arrows (...)))))
-   ...
+   ...))
 #+end_src
 
-There is bit of code to extract the toplogy (nodes and edges) from
+There is bit of code to extract the topology (nodes and edges) from
 sexpressions like that.
 
-The shell script topology.sh, which uses 
-[[http://cliki.net/cl-launch][cl-launch]] to print all the edges.
+The shell script topology.sh, which uses [[http://cliki.net/cl-launch][cl-launch]] to print all the edges.
 
 #+begin_src shell
 bash-3.2$ ./topology.sh abc.graphml
@@ -69,5 +68,6 @@ Beta -> Beta
 #+end_src
 
 Which illustrates that there are two extra edges in the abc.graphml that
-do not appear in the drawing.  Mysteries abound.
+do not appear in the drawing.  Mysteries[fn:1] abound.
 
+[fn:1] Ah, it's yEd feature/bug, discussed [[http://yed.yworks.com/support/qa/5067/extra-orphan-edges?show=5075#a5075][here]].
