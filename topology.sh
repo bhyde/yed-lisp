@@ -23,7 +23,7 @@
                 (uiop:quit))
                ((list (optima:guard graph-namestring (stringp graph-namestring)))
                 (unless (probe-file graph-namestring)
-                  (die -1 "File not found: ~A" graph-namestring))
+                  (uiop:die -1 "File not found: ~A" graph-namestring))
                 graph-namestring)
                (_
                 (uiop:die -1 "~&ERROR: malform args, try --help")))))
