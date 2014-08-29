@@ -1,5 +1,8 @@
-#!/usr/local/bin/cl -S ~/w/selected-asd -s yed-lisp -E main -X --
-":" ; # -*- mode: common-lisp -*-
+#!/usr/local/bin/cl -s yed-lisp -E main -X --
+; -*- mode:common-lisp -*-
+
+(in-package #:cl-user)
+
 (defun main (argv)
   (handler-case
       (flet
@@ -29,5 +32,3 @@
     (error (e) 
       (format *error-output* "~&ERROR: ~A" e)
       (uiop:quit -1))))
-     
-
