@@ -11,7 +11,8 @@
                  (yed-lisp:extract-topology 
                   (yed-lisp:load-graph graph-namestring))
                (flet ((node-name (node) (second (assoc node nodes))))
-                 (loop for (nil from to) in edges
+                 (loop 
+                    for (nil from to) in edges
                     do (format t "~&~A -> ~A"
                                (node-name from) (node-name to))))))
            (get-graph-namestring ()
@@ -22,13 +23,10 @@
                 (uiop:quit))
                ((list (optima:guard graph-namestring (stringp graph-namestring)))
                 (unless (probe-file graph-namestring)
-                  (format *error-output* "File not found: ~A" graph-namestring)
-                  (uiop:quit -1))
+                  (die -1 "File not found: ~A" graph-namestring))
                 graph-namestring)
                (_
-                (format *error-output* "~&ERROR: malform args, try --help")
-                (uiop:quit -1)))))
+                (uiop:die -1 "~&ERROR: malform args, try --help")))))
         (read-and-report (get-graph-namestring)))
     (error (e) 
-      (format *error-output* "~&ERROR: ~A" e)
-      (uiop:quit -1))))
+      (uiop:die -1 "~&ERROR: ~A" e))))
